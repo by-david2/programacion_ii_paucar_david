@@ -1,0 +1,205 @@
+# ============================================================
+# PYTHON - GENERAL
+# ============================================================
+
+# Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Compiled files
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+pip-wheel-metadata/
+
+# Test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.mypy_cache/
+.pyre/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ============================================================
+# ENTORNOS VIRTUALES
+# ============================================================
+
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# ============================================================
+# DJANGO
+# ============================================================
+
+# Base de datos local
+db.sqlite3
+db.sqlite3-journal
+
+# Django static/media generados
+staticfiles/
+media/
+
+# Local Django settings
+local_settings.py
+
+# Django cache
+*.mo
+
+# ============================================================
+# ODOO
+# ============================================================
+
+# Odoo sessions
+*.sess
+
+# Odoo filestore
+filestore/
+
+# Odoo logs
+*.log
+
+# Odoo generated files
+*.pyc
+
+# Odoo development databases
+*.dump
+*.sql
+
+# Odoo configuration local
+odoo.conf
+*.conf
+
+# ============================================================
+# IDE / EDITORES
+# ============================================================
+
+# VS Code
+.vscode/
+
+# PyCharm / IntelliJ
+.idea/
+*.iml
+
+# Sublime
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+*~
+
+# ============================================================
+# SISTEMA OPERATIVO
+# ============================================================
+
+# Linux
+.directory
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ============================================================
+# LOGS
+# ============================================================
+
+*.log
+logs/
+log/
+
+# ============================================================
+# ARCHIVOS TEMPORALES
+# ============================================================
+
+*.tmp
+*.temp
+*.bak
+*.backup
+*.cache
+*.old
+
+# ============================================================
+# SECRETOS / CREDENCIALES
+# ============================================================
+
+*.pem
+*.key
+*.crt
+
+# Nunca subir credenciales
+secrets.json
+credentials.json
+
+# ============================================================
+# BASES DE DATOS LOCALES
+# ============================================================
+
+*.sqlite
+*.sqlite3
+*.db
+
+# ============================================================
+# ARCHIVOS DE CONFIGURACIÓN LOCALES
+# ============================================================
+
+*.local
+config.local.*
+settings.local.*
+
+# ============================================================
+# NODE / FRONTEND (por si algún proyecto Django/Odoo lo usa)
+# ============================================================
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ============================================================
+# ARCHIVOS GENERADOS
+# ============================================================
+
+*.pid
+*.pid.lock
+*.seed
+
+# ============================================================
+# BACKUPS
+# ============================================================
+
+backup/
+backups/
+*.zip
+*.tar
+*.tar.gz
+*.rar
