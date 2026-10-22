@@ -1,0 +1,585 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFix Garage | Taller Mecánico</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #111;
+            color: white;
+        }
+
+        header {
+            background: #181818;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 3px solid #ffb700;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #ffb700;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #ffb700;
+        }
+
+        .hero {
+            min-height: 520px;
+            padding: 80px 8%;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(90deg, #111 15%, #111c 65%, #1118),
+                url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1600&q=80")
+                center/cover;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 62px);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: #ffb700;
+        }
+
+        .hero p {
+            color: #ddd;
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ffb700;
+            color: #111;
+            padding: 14px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: #ffb700;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .services {
+            background: #181818;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit, minmax(220px, 1fr)
+            );
+            gap: 25px;
+        }
+
+        .card {
+            background: #222;
+            padding: 30px 25px;
+            border-radius: 8px;
+            border-bottom: 3px solid #ffb700;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            background: #292929;
+        }
+
+        .icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: #ffb700;
+        }
+
+        .card p {
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit, minmax(260px, 1fr)
+            );
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .about h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .about h2 span {
+            color: #ffb700;
+        }
+
+        .about p {
+            color: #bbb;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .benefit {
+            margin: 12px 0;
+            color: #eee;
+        }
+
+        .appointment {
+            background: #181818;
+        }
+
+        .form-container {
+            max-width: 650px;
+            margin: auto;
+            background: #222;
+            padding: 35px;
+            border-radius: 10px;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            color: #eee;
+        }
+
+        .form-container input,
+        .form-container select,
+        .form-container textarea {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 20px;
+            border: 1px solid #444;
+            background: #151515;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .form-container input:focus,
+        .form-container select:focus,
+        .form-container textarea:focus {
+            outline: 1px solid #ffb700;
+        }
+
+        .form-container .btn {
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .contact-info {
+            text-align: center;
+            line-height: 2;
+            color: #ccc;
+        }
+
+        .contact-info span {
+            color: #ffb700;
+        }
+
+        footer {
+            background: #080808;
+            padding: 25px;
+            text-align: center;
+            color: #888;
+            border-top: 1px solid #333;
+        }
+
+        @media (max-width: 650px) {
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0;
+            }
+
+            .hero {
+                padding: 60px 6%;
+            }
+
+            .form-container {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="logo">🔧 AUTOFIX GARAGE</div>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#citas">Citas</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- PORTADA -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Tu vehículo en las mejores <span>manos.</span></h1>
+
+            <p>
+                Ofrecemos mantenimiento, diagnóstico y reparación
+                automotriz con atención profesional y compromiso
+                con la seguridad de tu vehículo.
+            </p>
+
+            <a href="#citas" class="btn">AGENDA TU CITA</a>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="services" id="servicios">
+        <h2 class="section-title">
+            Nuestros <span>servicios</span>
+        </h2>
+
+        <p class="section-description">
+            Soluciones para mantener tu vehículo en perfecto estado.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">🛢️</div>
+                <h3>Cambio de aceite</h3>
+                <p>
+                    Cambio de aceite y revisión de filtros para
+                    ayudar a mantener el motor funcionando correctamente.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🔩</div>
+                <h3>Reparación mecánica</h3>
+                <p>
+                    Inspección y reparación de componentes mecánicos
+                    según las necesidades de tu automóvil.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🔋</div>
+                <h3>Sistema eléctrico</h3>
+                <p>
+                    Revisión de batería, luces, alternador y otros
+                    componentes del sistema eléctrico.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🚘</div>
+                <h3>Diagnóstico automotriz</h3>
+                <p>
+                    Evaluación de fallas mediante inspección y
+                    herramientas de diagnóstico automotriz.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🛞</div>
+                <h3>Frenos y suspensión</h3>
+                <p>
+                    Inspección de frenos, amortiguadores y suspensión
+                    para contribuir a una conducción segura.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">⚙️</div>
+                <h3>Mantenimiento preventivo</h3>
+                <p>
+                    Revisiones periódicas para detectar problemas
+                    antes de que se conviertan en averías mayores.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section class="about" id="nosotros">
+
+        <div>
+            <img
+                src="https://images.unsplash.com/photo-1632823471565-1ecdf5c6c2d5?auto=format&fit=crop&w=1000&q=80"
+                alt="Automóvil en un taller mecánico"
+            >
+        </div>
+
+        <div>
+            <h2>Calidad y confianza en cada <span>reparación</span></h2>
+
+            <p>
+                En AutoFix Garage trabajamos para ofrecer soluciones
+                automotrices responsables, con atención personalizada
+                y un enfoque en la calidad de nuestro trabajo.
+            </p>
+
+            <div class="benefit">
+                ✔ Atención personalizada
+            </div>
+
+            <div class="benefit">
+                ✔ Diagnóstico y explicación de las averías
+            </div>
+
+            <div class="benefit">
+                ✔ Presupuestos claros antes de reparar
+            </div>
+
+            <div class="benefit">
+                ✔ Compromiso con la seguridad del vehículo
+            </div>
+
+            <br>
+
+            <a href="#contacto" class="btn">CONTÁCTANOS</a>
+        </div>
+
+    </section>
+
+    <!-- FORMULARIO DE CITAS -->
+    <section class="appointment" id="citas">
+
+        <h2 class="section-title">
+            Agenda tu <span>cita</span>
+        </h2>
+
+        <p class="section-description">
+            Completa tus datos para preparar una solicitud de servicio.
+        </p>
+
+        <div class="form-container">
+            <form id="appointmentForm">
+
+                <label for="nombre">Nombre completo</label>
+                <input
+                    type="text"
+                    id="nombre"
+                    placeholder="Escribe tu nombre"
+                    required
+                >
+
+                <label for="telefono">Teléfono</label>
+                <input
+                    type="tel"
+                    id="telefono"
+                    placeholder="Tu número de contacto"
+                    required
+                >
+
+                <label for="vehiculo">Marca y modelo del vehículo</label>
+                <input
+                    type="text"
+                    id="vehiculo"
+                    placeholder="Ej. Toyota Corolla 2018"
+                    required
+                >
+
+                <label for="servicio">Servicio solicitado</label>
+                <select id="servicio" required>
+                    <option value="">Selecciona un servicio</option>
+                    <option>Cambio de aceite</option>
+                    <option>Reparación mecánica</option>
+                    <option>Sistema eléctrico</option>
+                    <option>Diagnóstico automotriz</option>
+                    <option>Frenos y suspensión</option>
+                    <option>Mantenimiento preventivo</option>
+                    <option>Otro</option>
+                </select>
+
+                <label for="fecha">Fecha preferida</label>
+                <input
+                    type="date"
+                    id="fecha"
+                    required
+                >
+
+                <label for="detalles">Detalles del problema</label>
+                <textarea
+                    id="detalles"
+                    rows="4"
+                    placeholder="Describe brevemente qué le sucede al vehículo"
+                ></textarea>
+
+                <button type="submit" class="btn">
+                    SOLICITAR CITA
+                </button>
+
+            </form>
+
+            <p id="mensaje" style="margin-top: 20px; line-height: 1.6;"></p>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+
+        <h2 class="section-title">
+            Información de <span>contacto</span>
+        </h2>
+
+        <p class="section-description">
+            Estamos listos para ayudarte con tu vehículo.
+        </p>
+
+        <div class="contact-info">
+            <p>📍 <span>Dirección:</span> Añade aquí la dirección del taller</p>
+            <p>📞 <span>Teléfono:</span> Añade aquí tu número</p>
+            <p>✉️ <span>Correo:</span> contacto@autofix.com</p>
+            <p>🕒 <span>Horario:</span> Lunes a sábado, 08:00 - 18:00</p>
+        </div>
+
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>© 2026 AutoFix Garage. Todos los derechos reservados.</p>
+        <p>Potencia, calidad y confianza sobre ruedas. 🔧</p>
+    </footer>
+
+    <!-- FUNCIONALIDAD DEL FORMULARIO -->
+    <script>
+        const formulario = document.getElementById("appointmentForm");
+        const mensaje = document.getElementById("mensaje");
+        const fecha = document.getElementById("fecha");
+
+        // Evita seleccionar fechas anteriores a hoy.
+        const hoy = new Date();
+        const fechaLocal = new Date(
+            hoy.getTime() - hoy.getTimezoneOffset() * 60000
+        ).toISOString().split("T")[0];
+
+        fecha.min = fechaLocal;
+
+        formulario.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById("nombre").value;
+            const telefono = document.getElementById("telefono").value;
+            const vehiculo = document.getElementById("vehiculo").value;
+            const servicio = document.getElementById("servicio").value;
+            const fechaCita = fecha.value;
+            const detalles = document.getElementById("detalles").value;
+
+            const solicitud = {
+                nombre: nombre,
+                telefono: telefono,
+                vehiculo: vehiculo,
+                servicio: servicio,
+                fecha: fechaCita,
+                detalles: detalles
+            };
+
+            mensaje.style.color = "#ffb700";
+            mensaje.textContent =
+                "¡Solicitud preparada! Revisa los datos antes de enviarlos al taller.";
+
+            const resumen = document.createElement("div");
+            resumen.style.marginTop = "15px";
+            resumen.style.padding = "15px";
+            resumen.style.background = "#151515";
+            resumen.style.borderRadius = "5px";
+            resumen.style.whiteSpace = "pre-line";
+
+            resumen.textContent =
+                "RESUMEN DE LA SOLICITUD\n\n" +
+                "Nombre: " + solicitud.nombre + "\n" +
+                "Teléfono: " + solicitud.telefono + "\n" +
+                "Vehículo: " + solicitud.vehiculo + "\n" +
+                "Servicio: " + solicitud.servicio + "\n" +
+                "Fecha: " + solicitud.fecha + "\n" +
+                "Detalles: " + (solicitud.detalles || "No especificados");
+
+            mensaje.replaceChildren();
+            mensaje.appendChild(document.createTextNode(
+                "¡Solicitud preparada! Esta demostración no envía los datos al taller."
+            ));
+            mensaje.appendChild(resumen);
+        });
+    </script>
+
+</body>
+</html>
