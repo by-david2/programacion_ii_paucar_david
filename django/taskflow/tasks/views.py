@@ -1,17 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from django.http import HttpResponse
 
+from .forms import ProjectForm
+from .models import Project
+
 
 def home(request):
-    return HttpResponse("""
-        <html>
-            <body>
-                <h1>TaskFlow</h1>
-                <p>Bienvenido al sistema</p>
-            </body>
-        </html>
-    """)
+    projects = Project.objects.order_by("-created_at")
+    return render(request, "tasks/home.html", {"projects": projects})
+
+
+def project_create(request):
+    if request.method == "POST":
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("tasks:home")
+    else:
+        form = ProjectForm()
+
+    return render(request, "tasks/project_form.html", {"form": form})
 
 def register(request):
     """Vista de bienvenida de la app tasks."""
