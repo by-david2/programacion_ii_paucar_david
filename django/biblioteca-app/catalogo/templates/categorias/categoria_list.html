@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Categorías | Biblioteca</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        main {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        ul.lista-categorias {
+            list-style: none;
+            padding: 0;
+        }
+        .categoria-card {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .categoria-card strong {
+            font-size: 1.1em;
+            color: #333;
+        }
+        .categoria-card p {
+            margin: 8px 0 0 0;
+            color: #666;
+        }
+        .boton-inicio {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Biblioteca</h1>
+        <h2>Categorías</h2>
+        <nav>
+            <a class="boton-inicio" href="{% url 'home' %}">← Volver al inicio</a>
+            |
+            <a href="{% url 'libro_list' %}">Catálogo de libros</a>
+        </nav>
+
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <p><a href="{% url 'categoria_create' %}">Registrar categoría</a></p>
+
+        {% if categorias %}
+            <ul class="lista-categorias">
+                {% for categoria in categorias %}
+                    <li class="categoria-card">
+                        <strong>{{ categoria.nombre }}</strong>
+                        {% if categoria.descripcion %}
+                            <p>{{ categoria.descripcion }}</p>
+                        {% endif %}
+                        <a href="{% url 'categoria_update' categoria.pk %}">Editar</a>
+                        <a href="{% url 'categoria_delete' categoria.pk %}">Eliminar</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aún no hay categorías registradas.</p>
+        {% endif %}
+    </main>
+</body>
+</html>

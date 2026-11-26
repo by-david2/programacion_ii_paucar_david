@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LOGIN</title>
+</head>
+<body>
+    <h1>CONTROL DE ACCESO</h1>
+    <h2>Sistema de gestion biblioteca</h2>
+    {%if form.errors %}
+        <p style="color: red ;">Nombre de usuario o contraseña incorrectos.</p>
+    {%endif%}    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name="next" value="{{ next }}">
+        <button type="submit">Iniciar sesion</button>
+    </form>
+</body>
+</html>
