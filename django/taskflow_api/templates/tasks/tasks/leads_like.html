@@ -1,0 +1,549 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PetCare | Consultorio Veterinario</title>
+<meta name="description" content="Consultorio veterinario PetCare. Atención médica, vacunas, peluquería y cuidado integral para tus mascotas.">
+
+<style>
+:root {
+  --verde: #16856b;
+  --oscuro: #123d35;
+  --claro: #e9f8f1;
+  --texto: #344b45;
+  --blanco: #ffffff;
+  --naranja: #ffbd70;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--texto);
+  line-height: 1.6;
+  background: #fff;
+}
+a { text-decoration: none; color: inherit; }
+button, input, select, textarea { font: inherit; }
+button, .boton { cursor: pointer; }
+header {
+  background: white;
+  padding: 15px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 12px #0000000c;
+}
+.logo { font-size: 25px; font-weight: 800; color: var(--verde); }
+.logo span { color: var(--naranja); }
+nav { display: flex; gap: 22px; align-items: center; }
+nav a { font-size: 14px; font-weight: 600; }
+nav a:hover { color: var(--verde); }
+.boton {
+  display: inline-block;
+  border: none;
+  border-radius: 9px;
+  padding: 13px 21px;
+  background: var(--verde);
+  color: white;
+  font-weight: bold;
+  transition: .2s;
+}
+.boton:hover { background: var(--oscuro); transform: translateY(-2px); }
+.boton-claro { background: white; color: var(--verde); }
+.menu-btn { display: none; background: none; border: 0; font-size: 27px; }
+.hero {
+  background: linear-gradient(120deg, #e8f8ef, #f7fcf8);
+  padding: 75px 7%;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 45px;
+  align-items: center;
+}
+.etiqueta {
+  display: inline-block;
+  background: #d3f1e2;
+  color: var(--verde);
+  padding: 7px 13px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+h1 { font-size: clamp(36px, 5vw, 58px); line-height: 1.12; color: var(--oscuro); margin-bottom: 22px; }
+h1 span { color: var(--verde); }
+.hero p { font-size: 17px; margin-bottom: 25px; max-width: 560px; }
+.hero-imagen {
+  min-height: 330px;
+  border-radius: 25px;
+  background: #ccebd9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 125px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-imagen img { width: 100%; height: 100%; min-height: 330px; object-fit: cover; position: absolute; }
+.hero-imagen .emoji { position: relative; z-index: 1; }
+.datos {
+  padding: 25px 7%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  background: white;
+  text-align: center;
+}
+.dato strong { display: block; color: var(--verde); font-size: 25px; }
+.dato span { font-size: 14px; }
+section { padding: 75px 7%; scroll-margin-top: 75px; }
+.encabezado { text-align: center; margin: 0 auto 40px; max-width: 650px; }
+.encabezado h2 { color: var(--oscuro); font-size: clamp(28px, 4vw, 38px); margin-bottom: 12px; }
+.encabezado p { color: #687b75; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 23px; }
+.tarjeta {
+  padding: 27px;
+  border: 1px solid #e7efea;
+  border-radius: 17px;
+  background: white;
+  transition: .2s;
+}
+.tarjeta:hover { transform: translateY(-5px); box-shadow: 0 12px 30px #164e3510; }
+.icono { font-size: 39px; margin-bottom: 13px; }
+.tarjeta h3 { color: var(--oscuro); margin-bottom: 10px; }
+.tarjeta p { font-size: 14px; margin-bottom: 15px; }
+.precio { font-size: 22px; font-weight: bold; color: var(--verde); }
+.nota { font-size: 12px; color: #718078; }
+.fondo { background: #f3faf6; }
+.equipo { text-align: center; }
+.avatar {
+  width: 100px; height: 100px; border-radius: 50%;
+  background: var(--claro); margin: 0 auto 17px;
+  display: grid; place-items: center; font-size: 52px;
+}
+.equipo h3 { margin-bottom: 4px; }
+.especialidad { color: var(--verde); font-size: 14px; font-weight: bold; }
+.cita {
+  background: var(--oscuro);
+  color: white;
+  border-radius: 23px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 40px;
+}
+.cita h2 { font-size: 34px; margin-bottom: 15px; }
+.cita p { color: #d5e9df; margin-bottom: 17px; }
+.formulario { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.campo { display: flex; flex-direction: column; gap: 6px; }
+.campo label { font-size: 13px; }
+.campo input, .campo select, .campo textarea {
+  width: 100%; padding: 12px;
+  border-radius: 8px; border: 1px solid #dbe7df;
+  background: white; color: #263c34;
+}
+.campo textarea { resize: vertical; min-height: 85px; }
+.completo { grid-column: 1 / -1; }
+.formulario .boton { margin-top: 5px; }
+.aviso { font-size: 12px; color: #d5e9df; }
+.testimonio { background: white; }
+.estrellas { color: #e9a23b; letter-spacing: 3px; margin-bottom: 12px; }
+.testimonio .persona { margin-top: 15px; font-weight: bold; color: var(--verde); }
+.consejo { background: #fff8ed; border-color: #f4e7d2; }
+.contacto { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; }
+.contacto h2 { color: var(--oscuro); font-size: 34px; margin-bottom: 15px; }
+.contacto p { margin-bottom: 15px; }
+.contacto-item { padding: 13px 0; border-bottom: 1px solid #e4ece7; }
+.mapa {
+  min-height: 280px; border-radius: 18px; background: var(--claro);
+  display: grid; place-items: center; text-align: center; padding: 20px;
+}
+footer { background: #0c3029; color: white; padding: 35px 7%; }
+.footer-contenido { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+footer p { font-size: 13px; color: #c6ddd3; }
+footer a { color: #d4f2e2; }
+.whatsapp {
+  position: fixed; right: 20px; bottom: 20px; z-index: 20;
+  background: #20b96b; color: white; padding: 13px 18px;
+  border-radius: 40px; font-weight: bold; box-shadow: 0 5px 20px #0002;
+}
+.mensaje { display: none; padding: 13px; border-radius: 8px; background: #d7f6e4; color: #145b3b; }
+@media(max-width: 850px) {
+  nav { display: none; position: absolute; top: 68px; left: 0; width: 100%; padding: 20px; background: white; flex-direction: column; }
+  nav.abierto { display: flex; }
+  .menu-btn { display: block; }
+  header > .boton { display: none; }
+  .hero, .cita, .contacto { grid-template-columns: 1fr; }
+  .hero { padding-top: 45px; }
+  .hero-imagen { min-height: 250px; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media(max-width: 540px) {
+  section { padding: 50px 6%; }
+  .hero { padding: 45px 6%; }
+  .grid { grid-template-columns: 1fr; }
+  .datos { padding: 22px 4%; }
+  .dato strong { font-size: 20px; }
+  .dato span { font-size: 11px; }
+  .cita { padding: 25px 18px; }
+  .formulario { grid-template-columns: 1fr; }
+  .completo { grid-column: auto; }
+  .whatsapp { right: 12px; bottom: 12px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#inicio" class="logo">🐾 Pet<span>Care</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+  <nav id="menu">
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#equipo">Veterinarios</a>
+    <a href="#citas">Agendar cita</a>
+    <a href="#consejos">Consejos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <a class="boton" href="#citas">📅 Reservar cita</a>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div>
+    <span class="etiqueta">💚 Cuidamos a quienes más quieres</span>
+    <h1>Su salud, nuestro <span>compromiso.</span></h1>
+    <p>En PetCare brindamos atención veterinaria con amor, profesionalismo y dedicación. Tu mascota merece una vida sana y feliz.</p>
+    <a href="#citas" class="boton">Agendar una cita →</a>
+    <a href="#servicios" class="boton boton-claro">Ver servicios</a>
+  </div>
+  <div class="hero-imagen">
+    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=900&q=85"
+         alt="Perros felices al aire libre"
+         onerror="this.style.display='none'">
+  </div>
+</section>
+
+<div class="datos">
+  <div class="dato"><strong>100%</strong><span>Amor por los animales</span></div>
+  <div class="dato"><strong>24/7</strong><span>Orientación de emergencia por teléfono*</span></div>
+  <div class="dato"><strong>🐾</strong><span>Atención personalizada</span></div>
+</div>
+
+<section id="servicios">
+  <div class="encabezado">
+    <span class="etiqueta">Nuestros servicios</span>
+    <h2>Todo para el bienestar de tu mascota</h2>
+    <p>Atención integral para perros, gatos y otros animales de compañía.</p>
+  </div>
+  <div class="grid">
+    <article class="tarjeta">
+      <div class="icono">🩺</div>
+      <h3>Consulta general</h3>
+      <p>Evaluación física, diagnóstico inicial y recomendaciones de cuidado.</p>
+      <div class="precio">$20.00</div>
+      <span class="nota">Precio referencial</span>
+    </article>
+    <article class="tarjeta">
+      <div class="icono">💉</div>
+      <h3>Vacunación</h3>
+      <p>Plan de vacunas de acuerdo con la especie, edad y condición del animal.</p>
+      <div class="precio">Desde $12</div>
+      <span class="nota">Según vacuna indicada</span>
+    </article>
+    <article class="tarjeta">
+      <div class="icono">🦷</div>
+      <h3>Salud dental</h3>
+      <p>Revisión oral y orientación para prevenir enfermedades dentales.</p>
+      <div class="precio">Desde $15</div>
+      <span class="nota">Según evaluación</span>
+    </article>
+    <article class="tarjeta">
+      <div class="icono">✂️</div>
+      <h3>Peluquería y baño</h3>
+      <p>Baño higiénico, cepillado y arreglo según las necesidades de tu mascota.</p>
+      <div class="precio">Desde $15</div>
+      <span class="nota">Según tamaño y pelaje</span>
+    </article>
+    <article class="tarjeta">
+      <div class="icono">🔬</div>
+      <h3>Exámenes clínicos</h3>
+      <p>Pruebas de laboratorio indicadas por el profesional veterinario.</p>
+      <div class="precio">Desde $10</div>
+      <span class="nota">Según examen requerido</span>
+    </article>
+    <article class="tarjeta">
+      <div class="icono">🐕</div>
+      <h3>Desparasitación</h3>
+      <p>Prevención y control de parásitos según peso y evaluación clínica.</p>
+      <div class="precio">Desde $8</div>
+      <span class="nota">Medicamentos según indicación</span>
+    </article>
+  </div>
+  <p class="nota" style="text-align:center;margin-top:22px">
+    *Los servicios, precios y disponibilidad son ejemplos editables.
+    No se garantiza atención de emergencia 24 horas hasta contar con ese servicio.
+  </p>
+</section>
+
+<section class="fondo" id="equipo">
+  <div class="encabezado">
+    <span class="etiqueta">Nuestro equipo</span>
+    <h2>Profesionales que cuidan con el corazón</h2>
+    <p>Un equipo comprometido con la salud y felicidad de cada paciente.</p>
+  </div>
+  <div class="grid">
+    <article class="tarjeta equipo">
+      <div class="avatar">👨‍⚕️</div>
+      <h3>Dr. Carlos Mendoza</h3>
+      <div class="especialidad">Medicina veterinaria</div>
+      <p>Consulta general, prevención y bienestar animal.</p>
+    </article>
+    <article class="tarjeta equipo">
+      <div class="avatar">👩‍⚕️</div>
+      <h3>Dra. Ana Torres</h3>
+      <div class="especialidad">Medicina preventiva</div>
+      <p>Vacunación, controles y asesoría para propietarios.</p>
+    </article>
+    <article class="tarjeta equipo">
+      <div class="avatar">👩‍⚕️</div>
+      <h3>Dra. María López</h3>
+      <div class="especialidad">Cuidado integral</div>
+      <p>Seguimiento clínico y orientación de salud animal.</p>
+    </article>
+  </div>
+  <p class="nota" style="text-align:center;margin-top:20px">
+    Los nombres y perfiles son demostrativos. Reemplázalos por el personal real.
+  </p>
+</section>
+
+<section id="citas">
+  <div class="cita">
+    <div>
+      <span class="etiqueta">Reserva en línea</span>
+      <h2>Agenda la próxima visita de tu mascota</h2>
+      <p>Completa tus datos y prepara la información básica para solicitar una cita.</p>
+      <p>📍 Dirección: [Escribe tu dirección]</p>
+      <p>🕒 Lunes a sábado: 08:00 a 18:00</p>
+      <p>📞 Teléfono: [Tu número]</p>
+      <p class="aviso">Este formulario prepara una solicitud en WhatsApp. No confirma una cita automáticamente.</p>
+    </div>
+    <form class="formulario" id="formCita">
+      <div class="campo">
+        <label for="nombre">Nombre del propietario *</label>
+        <input id="nombre" name="nombre" required placeholder="Tu nombre">
+      </div>
+      <div class="campo">
+        <label for="telefono">Teléfono *</label>
+        <input id="telefono" name="telefono" type="tel" required placeholder="Tu número">
+      </div>
+      <div class="campo">
+        <label for="mascota">Nombre de la mascota *</label>
+        <input id="mascota" name="mascota" required placeholder="Ej. Max">
+      </div>
+      <div class="campo">
+        <label for="tipo">Tipo de mascota *</label>
+        <select id="tipo" name="tipo" required>
+          <option value="">Seleccionar</option>
+          <option>Perro</option>
+          <option>Gato</option>
+          <option>Ave</option>
+          <option>Conejo</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="servicio">Servicio *</label>
+        <select id="servicio" name="servicio" required>
+          <option value="">Seleccionar servicio</option>
+          <option>Consulta general</option>
+          <option>Vacunación</option>
+          <option>Salud dental</option>
+          <option>Peluquería y baño</option>
+          <option>Exámenes clínicos</option>
+          <option>Desparasitación</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="fecha">Fecha preferida *</label>
+        <input id="fecha" name="fecha" type="date" required>
+      </div>
+      <div class="campo completo">
+        <label for="detalles">Detalles o síntomas</label>
+        <textarea id="detalles" name="detalles" placeholder="Cuéntanos brevemente qué necesita tu mascota"></textarea>
+      </div>
+      <button type="submit" class="boton completo">Enviar solicitud por WhatsApp 🐾</button>
+      <div class="mensaje completo" id="mensaje" role="status"></div>
+    </form>
+  </div>
+</section>
+
+<section id="consejos" class="fondo">
+  <div class="encabezado">
+    <span class="etiqueta">Consejos veterinarios</span>
+    <h2>Pequeños cuidados, grandes beneficios</h2>
+    <p>Hábitos sencillos que contribuyen al bienestar de tu compañero.</p>
+  </div>
+  <div class="grid">
+    <article class="tarjeta consejo">
+      <div class="icono">🥣</div>
+      <h3>Alimentación equilibrada</h3>
+      <p>Elige alimentos adecuados para la especie, edad y condición de tu mascota. Mantén agua fresca disponible.</p>
+    </article>
+    <article class="tarjeta consejo">
+      <div class="icono">🏃</div>
+      <h3>Ejercicio y juegos</h3>
+      <p>Ofrece actividad física, enriquecimiento ambiental y tiempo de calidad todos los días.</p>
+    </article>
+    <article class="tarjeta consejo">
+      <div class="icono">❤️</div>
+      <h3>Chequeos preventivos</h3>
+      <p>Programa revisiones periódicas y consulta sobre vacunas, parásitos y cuidado dental.</p>
+    </article>
+  </div>
+</section>
+
+<section>
+  <div class="encabezado">
+    <span class="etiqueta">Experiencias</span>
+    <h2>Lo que dicen nuestros clientes</h2>
+  </div>
+  <div class="grid">
+    <article class="tarjeta testimonio">
+      <div class="estrellas">★★★★★</div>
+      <p>"Una atención amable y muy paciente con mi perrito. Me explicaron cómo cuidarlo mejor."</p>
+      <div class="persona">— Cliente de PetCare</div>
+    </article>
+    <article class="tarjeta testimonio">
+      <div class="estrellas">★★★★★</div>
+      <p>"El lugar es acogedor y me gustó la atención que recibió mi gatita."</p>
+      <div class="persona">— Cliente de PetCare</div>
+    </article>
+    <article class="tarjeta testimonio">
+      <div class="estrellas">★★★★★</div>
+      <p>"Me ayudaron a organizar las vacunas y los controles de mi mascota."</p>
+      <div class="persona">— Cliente de PetCare</div>
+    </article>
+  </div>
+  <p class="nota" style="text-align:center;margin-top:18px">
+    Testimonios de ejemplo. Sustitúyelos por opiniones reales y autorizadas.
+  </p>
+</section>
+
+<section id="contacto" class="fondo">
+  <div class="contacto">
+    <div>
+      <span class="etiqueta">Estamos para ayudarte</span>
+      <h2>Visítanos</h2>
+      <p>Queremos acompañarte en cada etapa de la vida de tu mascota.</p>
+      <div class="contacto-item">📍 <strong>Dirección</strong><br>[Tu calle, ciudad y país]</div>
+      <div class="contacto-item">📞 <strong>Teléfono</strong><br>[Tu número de contacto]</div>
+      <div class="contacto-item">✉️ <strong>Correo</strong><br>[tucorreo@ejemplo.com]</div>
+      <div class="contacto-item">🕒 <strong>Horario</strong><br>Lunes a sábado: 08:00–18:00<br>Domingos: con cita previa</div>
+    </div>
+    <div class="mapa">
+      <div>
+        <div style="font-size:55px">📍</div>
+        <h3>Encuéntranos en tu ciudad</h3>
+        <p>Agrega aquí la dirección real del consultorio.</p>
+        <a class="boton" target="_blank" rel="noopener"
+           href="https://www.google.com/maps">
+          Abrir Google Maps →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-contenido">
+    <div>
+      <div class="logo" style="color:white">🐾 PetCare</div>
+      <p>Cuidamos a tu mejor amigo como parte de la familia.</p>
+    </div>
+    <div>
+      <p><a href="#inicio">Inicio</a> · <a href="#servicios">Servicios</a> · <a href="#citas">Citas</a></p>
+      <p>© <span id="anio"></span> PetCare. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp" id="botonWhatsapp" href="https://wa.me/"
+   target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  ☎ WhatsApp
+</a>
+
+<script>
+// CONFIGURA AQUÍ TU NÚMERO DE WHATSAPP.
+// Ecuador: código 593 + número, sin el 0 inicial ni el signo +.
+// Ejemplo ficticio: 593991234567
+const WHATSAPP = "593XXXXXXXXX";
+
+document.getElementById("anio").textContent = new Date().getFullYear();
+
+const menuBtn = document.getElementById("menuBtn");
+const menu = document.getElementById("menu");
+
+menuBtn.addEventListener("click", () => {
+  menu.classList.toggle("abierto");
+});
+
+menu.querySelectorAll("a").forEach(enlace => {
+  enlace.addEventListener("click", () => menu.classList.remove("abierto"));
+});
+
+const fecha = document.getElementById("fecha");
+const hoy = new Date();
+const hoyLocal = new Date(hoy.getTime() - hoy.getTimezoneOffset() * 60000)
+  .toISOString().split("T")[0];
+fecha.min = hoyLocal;
+
+document.getElementById("botonWhatsapp").addEventListener("click", function(e) {
+  if (!/^\d{10,15}$/.test(WHATSAPP)) {
+    e.preventDefault();
+    alert("Configura primero tu número de WhatsApp en el código HTML.");
+    return;
+  }
+  this.href = "https://wa.me/" + WHATSAPP;
+});
+
+document.getElementById("formCita").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  if (!/^\d{10,15}$/.test(WHATSAPP)) {
+    document.getElementById("mensaje").style.display = "block";
+    document.getElementById("mensaje").textContent =
+      "Antes de enviar solicitudes, configura el número de WhatsApp en el código.";
+    return;
+  }
+
+  const datos = new FormData(this);
+  const texto =
+    "🐾 SOLICITUD DE CITA - PETCARE\n\n" +
+    "Propietario: " + datos.get("nombre") + "\n" +
+    "Teléfono: " + datos.get("telefono") + "\n" +
+    "Mascota: " + datos.get("mascota") + "\n" +
+    "Tipo: " + datos.get("tipo") + "\n" +
+    "Servicio: " + datos.get("servicio") + "\n" +
+    "Fecha preferida: " + datos.get("fecha") + "\n" +
+    "Detalles: " + (datos.get("detalles") || "No especificados") +
+    "\n\nSolicitud pendiente de confirmación.";
+
+  const url = "https://wa.me/" + WHATSAPP +
+    "?text=" + encodeURIComponent(texto);
+
+  window.open(url, "_blank", "noopener,noreferrer");
+});
+</script>
+
+</body>
+</html>
